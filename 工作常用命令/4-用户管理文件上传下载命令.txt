@@ -1,0 +1,68 @@
+①******  用户添加和删除 ******
+useradd                  ：添加用户
+adduser                  ：添加用户
+userdel                  ：删除用户
+password                 ：设置密码
+
+userdel -r imooc         ：彻底删除用户
+
+
+②******  提权 和文件上传和下载操作
+sudo                    ：提权
+  visudo                ：给添加的用户添加权限
+  步骤：
+  root           账号登录
+  cd /home/      进入家账号
+  ls -al         查看文件目录
+  visudo         提权
+  %imooc  ALL=(ALL)  ALL  给账号提权
+  esc  :  wq 
+
+wget、curl              ：文件下载
+ 
+scp                     ：文件上传
+
+linux系统之间上传用
+  上传到imooc账号：
+  scp imooc.txt imooc@192.168.0.106:/tmp
+  登录imooc账号
+  imooc@192.168.0.106
+  cd /temp/
+  ls -al
+ 
+  上传到服务器：
+  scp imooc.txt imooc@192.168.0.106:/tmp
+
+  下载到本地：
+  scp imooc@192.168.0.106:/tmp/imooc.txt  ./
+
+
+
+Windows  Xshell上传和下载
+
+上传 
+  rz  
+
+
+下载 首先进入cd /temp/    imooc.txt
+  
+  sz imooc.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+

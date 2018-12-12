@@ -1,0 +1,8 @@
+① 查看pid
+ C:\Users\jason>netstat -aon|findstr "8081"
+
+② 查看具体进程名字
+ C:\Users\jason>tasklist|findstr "16532"
+
+③  kill掉进程
+ C:\Users\jason>taskkill /pid 16532 -f

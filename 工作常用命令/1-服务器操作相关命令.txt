@@ -1,0 +1,236 @@
+CentOS
+Redhat
+企业服务器
+嵌入式开发
+准备工作：
+查看ip
+
+   ifconfig
+   ip addr
+   vim /etc/sysconfig/network-scripts/ifcfg-
+   yum install net-tools
+
+虚拟主机光标移入或者移除：
+   windows ctrl键
+   ios     command键
+替换默认源
+安装Vim
+
+SSH客户端   ：XShell登录远程linux
+cd          ：进入文件夹子
+安装服务命令：yum install wget 
+SSH         ：Secure Shell 安全外壳协议  就是安全
+安装SSH     ：yum install openssh-server
+启动SSH     ：service sshd start
+查看进程在不在：ps -ef lgrep ssh
+设置开机运行  ：chkconfig sshd on
+
+XShell 连接SSH服务：ssh root@127.0.0.1
+输入密码          ：123456
+
+
+①   ****** SSH config  ******
+
+Host     ：别名 
+HostName ：主机名或者IP
+Port     ：默认22
+User     ：用户名
+
+ctrl + c ：终止请求
+
+cd ~/.ssh/      ~：家目录
+ls -al           ：显示文件夹下的文件
+touch config     ：创建文件
+vim   config     ：打开文件
+i                ：进入文件编辑 插入字符模式
+cat   config     ：查看文件内容
+esc + :          ：wq
+
+ssh 别名即可     ：登录  别名就是配置的
+
+②  ****** SSH免密码登录 ******
+ssh key  非对称加密方式 公钥和私钥
+
+touch authorized_keys     ：创建秘钥文件
+ssh-add ~/.ssh/imooc_rsa  ：添加私钥文件
+ssh
+③  ****** SSH安全端口  ******
+
+vim /etc/ssh/sshd_config  ：编辑文件
+esc + :    wq             ：保存并退出
+service sshd restart      ：重启服务
+
+④ ******  linux常用命令  ******
+
+yum                ：软件包管理器  
+yum install xxx    ：安装软件
+yum remove  xxx    ：卸载软件
+yum search  xxx    ：搜索软件
+yum clean packages ： 清理缓存
+yum list           ：列出已安装
+yum info   xxx     ：软件包信息
+
+⑤******  服务器相关操作命令  ******
+
+free -m            ：内存
+df   -h            ：硬盘
+w/top              ：负载 0-1 正常 >1 异常
+cat /proc/cpuinfo  ：查看cpu信息
+
+fdisk              ：格式化磁盘
+
+⑥ ******  文件操作命令 ******
+
+vim                ：文本编辑神器
+ls  -al            ：查看当前目录中的文件
+touch              ：新建文件
+mkdir              ：新建文件夹
+cd                 ：进入目录
+
+cd  /              ：根目录
+cd  /etc           ：存放配置文件
+cd  /home          ：存放当前用户
+
+rm                 ：删除文件和目录
+cp                 ：复制
+mv                 ：移动
+pwd                ：显示当前所在路径
+
+mkdir  -p  imooc_dir/test/test2       循环创建目录，实现层级
+rm     -r  imooc_dir/                 会有提示
+rm     -rf imooc_dir/                 强制删除，不会有提示了
+
+cp    ./imooc.log    ~/imooc.log2                复制文件 .表示当前目录
+cp -r /apps/svr/git/serving/target/jar文件包  .  复制到当前目录
+
+mv  ./imooc.log    ~/                  移动文件
+
+⑦******  VIM神器 ******
+
+vim imooc   ：创建并打开（如果没有就打开）
+i           ：命令行模式切换到输入模式
+esc         ：退出输入模式，变成命令行模式
+:   wq      ：保存并且退出
+gg  ：行首
+G   ：行尾
+dd          ：删除行
+u           ：恢复
+yy          ：复制一行
+p           ：粘贴一行
+cat  imooc  ：查看文件内容
+
+⑧******  文件搜索、查找、读取 ******
+
+tail -n imooc                  ：从文件尾部开始读    -n:不加的话默认10行   tail -20 imooc 显示20行                   
+head  imooc                    ：从文件头部读
+cat   imooc                    ：读取整个文件
+more  imooc                    ：分页读取
+
+less  imooc                    ：可控分页
+grep  -n  "关键字" imooc       ：搜索关键字,-n 显示行号
+find  imooc                    ：查找文件
+   find /etc/networds          ：查找指定文件
+   find .                      ：查找当前文件
+   find /etc/ -name "*ooc"     ：查找以ooc结尾的文件
+
+wc    imooc                    ：统计个数
+   cat imooc | wc -l           ：统计行数  |管道符号
+   vim imooc 
+   :set number                 ：显示行数
+   grep "111" imooc | wc -l    ：统计111关键字一共多少行
+   grep "2018-09-01 12:20" | more    ：分页查找
+   find . -type f              ：查找文件
+   find . -type d              ：查找文件夹
+
+   find . -ctime -20           ：查找前20天更新过的文件
+   find /var/log/ -type f -mtime +7  ：更新的7天之前的文件
+   find /var/log/ -type f -name "imooc" -exec ls -la {} \; 
+   find /var/log/ -type f -name "imooc" -exec rm {} \;
+
+tar                            ：文件解压缩
+   tar -cvf imooc.tar imooc     ：打包文件imooc 
+   tar -tvf imooc.tar          ：显示全部文件内容信息
+
+   tar -xvf imooc.tar           ：解压缩文件
+   ls -al   or ll              ：显示解压缩的文件
+   vim imooc                   ：打开imooc文件
+
+
+   tar -czvf imooc.tar.gz imooc：创建gz压缩文件
+   tar -tzvf imooc.tar.gz      ：查看文件
+
+   tar -xzvf imooc.tar.gz      ：解压gz文件
+   ls - al  or ll              ：显示解压缩的文件
+   vim imooc                   ：查看文件
+
+
+⑨******  maven常用命令 ******
+
+
+cd bin
+./mvn -v     查看版本号
+
+./mvn -help  查看帮助
+
+可以在任何目录下执行mvn命令了 -s：软的意思
+ln -s /tmp/maven/bin/mvn  /usr/bin/mvn ：创建软连接
+
+
+⑩****** 启动Tomcat常用命令 ******
+cd 进入tomcat bin目录
+
+sh startup.sh           ：启动tomcat
+
+ps -ef | grep tomcat     ：查看进程
+
+十一 ****** Nginx常用命令 ******
+虚拟主机
+多域名、多端口
+伪静态
+格式化日志
+反向代理 和 负载均衡
+
+yum install nginx
+service nginx start
+service nginx stop
+service nginx reload
+
+新版启动Nginx
+
+
+启动nginx服务：
+systemctl start nginx
+
+查看以下nginx的进程：
+# ps -ef | grep nginx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

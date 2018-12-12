@@ -1,0 +1,17 @@
+1.netstat  -anp  | grep   端口号
+
+2.netstat   -nultp（此处不用加端口号）
+
+3.通过命令：service iptables save 进行保存
+   重启iptables 
+   service iptables save && service iptables restart
+   关闭防火墙
+   chkconfig iptables off && service iptables stop
+
+4.修改  vim /etc/sysconfig/iptables
+
+5.查看  iptables -L -n --line-number
+           iptables -L -n
+
+6.查看外网ip  curl ip.cn
+

@@ -1,0 +1,7 @@
+mvn clean package;
+
+
+jdk安装    
+tomcat  放到家目录，解压
+maven 安装
+
