@@ -1,17 +1,17 @@
-1.netstat  -anp  | grep   ¶Ë¿ÚºÅ
+1.netstat  -anp  | grep   ç«¯å£å·     netstat -tunlp|grep 8089
 
-2.netstat   -nultp£¨´Ë´¦²»ÓÃ¼Ó¶Ë¿ÚºÅ£©
+2.netstat   -nultpï¼ˆæ­¤å¤„ä¸ç”¨åŠ ç«¯å£å·ï¼‰
 
-3.Í¨¹ıÃüÁî£ºservice iptables save ½øĞĞ±£´æ
-   ÖØÆôiptables 
+3.é€šè¿‡å‘½ä»¤ï¼šservice iptables save è¿›è¡Œä¿å­˜
+   é‡å¯iptables 
    service iptables save && service iptables restart
-   ¹Ø±Õ·À»ğÇ½
+   å…³é—­é˜²ç«å¢™
    chkconfig iptables off && service iptables stop
 
-4.ĞŞ¸Ä  vim /etc/sysconfig/iptables
+4.ä¿®æ”¹  vim /etc/sysconfig/iptables
 
-5.²é¿´  iptables -L -n --line-number
+5.æŸ¥çœ‹  iptables -L -n --line-number
            iptables -L -n
 
-6.²é¿´ÍâÍøip  curl ip.cn
+6.æŸ¥çœ‹å¤–ç½‘ip  curl ip.cn
 
